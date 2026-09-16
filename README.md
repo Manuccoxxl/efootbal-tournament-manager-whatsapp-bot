@@ -1,1 +1,0 @@
-# efootbal-tournament-manager-whatsapp-bot
