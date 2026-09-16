@@ -1,0 +1,18 @@
+{
+  "name": "efootball-whatsapp-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp bot for eFootball communities: registration, matchmaking, tournaments, stats/leaderboard, MVP tracking, moderation, leveling, and a simple economy.",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "whatsapp-web.js": "^1.26.0",
+    "qrcode-terminal": "^0.12.0",
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

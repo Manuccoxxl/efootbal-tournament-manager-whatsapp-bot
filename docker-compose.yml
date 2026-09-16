@@ -1,0 +1,27 @@
+services:
+  efootball-bot:
+    build: .
+    container_name: efootball-whatsapp-bot
+    restart: unless-stopped
+    environment:
+      # Must be 0.0.0.0 inside the container or Docker's port mapping can't
+      # reach it (binding to the container's own 127.0.0.1 loopback isn't
+      # visible outside the container at all). Real exposure is controlled
+      # by the "ports:" line below instead.
+      - DASHBOARD_HOST=0.0.0.0
+    volumes:
+      - wwebjs_auth:/app/.wwebjs_auth
+      - ./data:/app/data
+    # QR code prints to logs on first run:
+    #   docker compose logs -f
+    #
+    # Restricted to the Docker host's own loopback - not reachable from the
+    # wider network. That's intentional since there's no dashboard login.
+    # SSH-tunnel into the host to view it remotely (see DEPLOYMENT.md).
+    ports:
+      - "127.0.0.1:3000:3000"
+    stdin_open: true
+    tty: true
+
+volumes:
+  wwebjs_auth:
